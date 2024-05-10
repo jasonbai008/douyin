@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <title>精神抖擞</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #8360c3;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(-45deg, #2ebf91, #8360c3);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(-45deg, #2ebf91, #8360c3);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+
+      .wrapper {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      /* 兼容PC端屏幕 */
+      @media screen and (min-width: 900px) {
+        .wrapper {
+          width: 768px;
+          margin: 0 auto;
+        }
+      }
+
+      .top {
+        text-align: center;
+      }
+
+      .top .logo {
+        width: 60px;
+        /* mix-blend-mode: darken; */
+      }
+
+      .middle {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        margin-top: -50px;
+      }
+
+      .middle input {
+        appearance: none;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        width: 80%;
+        margin-bottom: 20px;
+        outline: none;
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      input::-webkit-input-placeholder {
+        color: #ddd;
+      }
+
+      .middle button {
+        font-weight: 300;
+        font-size: 14px;
+        text-align: center;
+        line-height: 36px;
+        height: 36px;
+        padding: 0 36px;
+        margin: 0;
+        appearance: none;
+        cursor: pointer;
+        border: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        /* background-color: #1B9AF7; */
+        /* border-color: #1B9AF7; */
+        color: #fff;
+        border-radius: 4px;
+        background: -webkit-linear-gradient(135deg, #2ebf91, #8360c3);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(135deg, #2ebf91, #8360c3);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+
+      footer {
+        font-size: 14px;
+      }
+
+      footer img {
+        width: 22px;
+        vertical-align: middle;
+        /* mix-blend-mode: darken; */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="top">
+        <img src="img/logo2.gif" class="logo" />
+        <h2>抖音下载神器</h2>
+      </div>
+      <div class="middle">
+        <button id="btn" onclick="parseClipboard()">解析抖音视频</button>
+      </div>
+      <footer>Developed by Jason Bai with <img src="img/love2.gif" alt="" /></footer>
+    </div>
+    <script>
+      let reg = /https:\/\/v.douyin.com\/\w{8}/g;
+      function parseClipboard() {
+        navigator.clipboard.readText().then((clipText) => {
+          let res = clipText.match(reg);
+          if (res) {
+            let url = res[0];
+            document.querySelector(".middle").innerText = url;
+            setTimeout(() => window.open(url), 2000);
+          } else {
+            alert("请先复制抖音上的一个视频的链接");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
