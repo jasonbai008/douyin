@@ -44,7 +44,6 @@
 
       .top .logo {
         width: 60px;
-        /* mix-blend-mode: darken; */
       }
 
       .middle {
@@ -108,7 +107,6 @@
       footer img {
         width: 22px;
         vertical-align: middle;
-        /* mix-blend-mode: darken; */
       }
     </style>
   </head>
@@ -125,7 +123,7 @@
       <footer>Developed by Jason Bai with <img src="img/love2.gif" alt="" /></footer>
     </div>
     <script>
-      let reg = /https:\/\/v.douyin.com\/\w{8}/g;
+      let reg = /https:\/\/v\.douyin\.com\/[a-zA-Z0-9]+/g;
       function parseClipboard() {
         navigator.clipboard.readText().then((clipText) => {
           let res = clipText.match(reg);
@@ -134,7 +132,7 @@
             document.querySelector(".middle").innerText = url;
             setTimeout(() => window.open(url), 2000);
           } else {
-            alert("请先复制抖音上的一个视频的链接");
+            alert("请先复制一个抖音分享链接");
           }
         });
       }
